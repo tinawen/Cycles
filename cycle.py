@@ -36,12 +36,6 @@ class Perm(dict):
             half = self**(exp / 2)
             return half * half
 
-    def dumb_pow(self, exp):
-        perm = Perm.ident(self.n)
-        for i in xrange(exp):
-            perm = perm * self
-        return perm
-
     def __ne__(a, b):
         return not (a == b)
 
@@ -79,19 +73,18 @@ class Perm(dict):
         random.shuffle(nlist)
         return Perm({i + 1: v for i, v in enumerate(nlist)})
 
-# print Perm.cycle(5, [1, 4, 2, 5])
-# print Perm.ident(3)
+print Perm.cycle(5, [1, 4, 2, 5])
+print Perm.ident(3)
 a = Perm.cycle(4, [1,2])
 b = Perm.cycle(4, [3,4])
-# print a
-# print b
-# print a*b
-# print b*a
-# print a*b == b*a
-# print (a*b).cycles()
+print a
+print b
+print a*b
+print b*a
+print a*b == b*a
+print (a*b).cycles()
 for n in xrange(100):
     perm = Perm.random(100)
-    print "perm is ", perm
     assert perm**n == perm.dumb_pow(n)
 
 
