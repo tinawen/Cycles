@@ -85,6 +85,6 @@ print a*b == b*a
 print (a*b).cycles()
 for n in xrange(100):
     perm = Perm.random(100)
-    assert perm**n == perm.dumb_pow(n)
+    print perm**n
 
 
